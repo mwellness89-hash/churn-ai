@@ -5,63 +5,52 @@ Main Flask application for Churn AI
 
 from flask import Flask, jsonify
 from flask_cors import CORS
-import os
 from src.config import config
+from src.models.churn_model import ChurnPredictorModel
 
 
 def create_app(config_name='development'):
     """Application factory"""
     
-    # Create Flask app
     app = Flask(__name__)
-    
-    # Load configuration
     app.config.from_object(config[config_name])
-    
-    # Enable CORS
     CORS(app)
     
-    # Store predictor on app (will load model later)
-    app.predictor = None
+    # Load ML model
+    print("🤖 Loading churn prediction model...")
+    try:
+        predictor = ChurnPredictorModel()
+        predictor.load('models/churn_model.pkl')
+        app.predictor = predictor
+        print("✅ Model loaded successfully")
+    except FileNotFoundError:
+        print("⚠️ Model not found. Train it first: python3 src/models/churn_model.py")
+        app.predictor = None
+    except Exception as e:
+        print(f"⚠️ Error loading model: {e}")
+        app.predictor = None
     
-    # Health check endpoint
+    # Health check
     @app.route('/health', methods=['GET'])
     def health():
-        """Health check endpoint"""
         return jsonify({
             "status": "ok",
             "service": "churn-ai-api",
-            "version": "1.0.0",
             "model_loaded": app.predictor is not None
         }), 200
     
-    # Test endpoint
-    @app.route('/api/v1/test', methods=['GET'])
-    def test():
-        """Test endpoint"""
-        from datetime import datetime
-        return jsonify({
-            "message": "API is working!",
-            "timestamp": str(datetime.now())
-        }), 200
-    
-    # Predict endpoint (placeholder for now)
-    @app.route('/api/v1/predict', methods=['POST'])
-    def predict():
-        """Placeholder prediction endpoint"""
-        return jsonify({
-            "status": "error",
-            "message": "Model not yet loaded. Run model training first."
-        }), 503
+    # Register API routes
+    from src.api.routes import api_bp
+    app.register_blueprint(api_bp)
     
     # Error handlers
     @app.errorhandler(404)
     def not_found(e):
-        return jsonify({"error": "Endpoint not found"}), 404
+        return jsonify({"error": "Not found"}), 404
     
     @app.errorhandler(500)
     def server_error(e):
-        return jsonify({"error": "Internal server error"}), 500
+        return jsonify({"error": "Server error"}), 500
     
     return app
 

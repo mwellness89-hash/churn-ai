@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Churn AI - Reduce Customer Churn 15-25%</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+        
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        header h1 { font-size: 3em; margin-bottom: 10px; }
+        header p { font-size: 1.3em; opacity: 0.95; }
+        
+        .section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        .problem p { font-size: 1.1em; margin-bottom: 15px; }
+        
+        .solution ul {
+            list-style: none;
+        }
+        
+        .solution li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1em;
+        }
+        
+        .solution li:before {
+            content: "✅ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .solution li:last-child {
+            border-bottom: none;
+        }
+        
+        .math-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .math-box {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .math-label { color: #666; font-weight: 500; }
+        .math-value { color: #667eea; font-size: 1.8em; font-weight: bold; margin-top: 10px; }
+        
+        .cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 50px 40px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .cta h2 { margin-bottom: 20px; font-size: 2.2em; }
+        .cta p { font-size: 1.2em; margin-bottom: 30px; }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 18px 50px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        
+        .testimonial {
+            background: #f0f4ff;
+            padding: 30px;
+            border-left: 4px solid #667eea;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .testimonial p { font-style: italic; margin-bottom: 10px; }
+        .testimonial author { display: block; font-weight: bold; color: #667eea; }
+        
+        @media (max-width: 768px) {
+            .math-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 2em; }
+            .section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Reduce Churn 15-25%</h1>
+            <p>In 60 days. Guaranteed. Or you don't pay.</p>
+        </header>
+        
+        <div class="section problem">
+            <h2>The Problem</h2>
+            <p><strong>Your churn is costing you real money.</strong></p>
+            <p>Every month, 3-5% of your customers quietly stop using your product. By the time you notice, they're gone.</p>
+            <p>Most tools <em>predict</em> churn. But they don't tell you <em>what to do</em> about it.</p>
+        </div>
+        
+        <div class="section solution">
+            <h2>What We Do</h2>
+            <ul>
+                <li><strong>Every Monday:</strong> Email with your top 20 at-risk customers</li>
+                <li><strong>For each customer:</strong> Exact action (discount %, email copy, call script)</li>
+                <li><strong>Every Friday:</strong> Report showing $X ARR saved</li>
+                <li><strong>You execute:</strong> We handle analysis + playbooks</li>
+            </ul>
+        </div>
+        
+        <div class="section">
+            <h2>The Math</h2>
+            <div class="math-grid">
+                <div class="math-box">
+                    <div class="math-label">Your current ARR</div>
+                    <div class="math-value">$2.0M</div>
+                </div>
+                <div class="math-box">
+                    <div class="math-label">Monthly churn (3%)</div>
+                    <div class="math-value">$60K lost</div>
+                </div>
+                <div class="math-box">
+                    <div class="math-label">We save (25% of churn)</div>
+                    <div class="math-value">$15K/month</div>
+                </div>
+                <div class="math-box">
+                    <div class="math-label">Your ROI</div>
+                    <div class="math-value">5x in month 1</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta">
+            <h2>Ready to Test This?</h2>
+            <p>60-day pilot. We reduce your churn or you don't pay.</p>
+            <a href="mailto:hello@churnai.dev?subject=Churn Reduction Pilot - Demo Request" class="cta-button">
+                Schedule 15-Min Call
+            </a>
+            <p style="margin-top: 30px; font-size: 0.95em;">No credit card. No commitment. Free data analysis.</p>
+        </div>
+    </div>
+</body>
+</html>
+
